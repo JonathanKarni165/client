@@ -1,0 +1,21 @@
+.form {
+    position: fixed;
+    width: 89%;
+    height: 35%;
+    padding: 2%;
+    left: 3%;
+    top: 30%;
+    z-index: 1;
+    background-color: aquamarine;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+.tit1 {
+    position: absolute;
+    width: 95%;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    font-size: x-large;
+    top: 25%;
+}
