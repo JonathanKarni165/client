@@ -4,7 +4,7 @@ import Message from "./Message";
 import InputBar from "./InputBar";
 import "./App.css";
 
-const socket = io.connect("ws://chat-server-yonatan.herokuapp.com/");
+const socket = io.connect("http://karnichat.cyou:5000");
 
 function App() {
   const [data, setData] = useState({});
@@ -37,16 +37,22 @@ function App() {
     element.scrollIntoView({ behavior: "smooth" });
   };
 
-  useEffect(getMessages, []);
+  useEffect(() => {
+    socket.on("connect", () => {
+      getMessages();
+    });
+
+    socket.on("disconnect", () => {
+      window.location.reload(false);
+    });
+  
+    socket.on("refresh", () => {
+      getMessages();
+    });
+  });
   useEffect(scrollDown, [data]);
 
-  socket.on("disconnect", () => {
-    window.location.reload(false);
-  });
-
-  socket.on("refresh", () => {
-    getMessages();
-  });
+  
 
   return (
     <div>
