@@ -12,10 +12,44 @@
 }
 
 .tit1 {
-    position: absolute;
+    position: relative;
     width: 95%;
     font-family: 'Courier New', Courier, monospace;
     text-align: center;
     font-size: x-large;
-    top: 25%;
+    top: 5%;
+}
+
+.indiv {
+    position: relative;
+    top: 5%;
+    margin-top: 20px;
+    width: 50%;
+    left: 21%;
+    height: 10%;
+}
+
+.btnpnl {
+    position: relative;
+    margin-top: 30px;
+    left: 22%;
+    width: 52.5%;
+    height: 20%;
+}
+
+.btndiv1 {
+    position: relative;
+    left: 0%;
+    height: 100%;
+    width: 45%;
+}
+
+
+.btndiv2 {
+    position: relative;
+    right: 0%;
+    bottom: 100%;
+    left: 55%;
+    height: 100%;
+    width: 45%;
 }

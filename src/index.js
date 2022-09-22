@@ -7,7 +7,7 @@ import SetNameForm from "./SetNameForm";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    {localStorage.getItem("name") ? <App /> : <SetNameForm />}
+    <App />
   </React.StrictMode>
 );
 
