@@ -1,0 +1,53 @@
+.room-btn {
+    position: relative;
+
+    font-family: 'Courier New', Courier, monospace;
+    
+    left: 7%;
+    margin: 3%;
+    width: 81%;
+    height: 20%;
+    background-color: aquamarine;
+    border: 2px solid darkslategrey;
+    border-radius: 5px;
+
+}
+
+.room-name {
+    position: absolute;
+    white-space: nowrap;
+    font-weight: bold;
+    overflow: hidden;
+    font-size: 18px;
+    text-align: left;
+    text-overflow: ellipsis;
+    width: 55%;
+    height: 25%;
+    left: 10%;
+    top: 15%;
+    color: rgb(2, 41, 0);
+}
+
+.room-msg {
+    position: absolute;
+    text-align: left;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    top: 45%;
+    width: 80%;
+    height: 43%;
+    font-weight: bold;
+    font-size: 15px;
+    left: 10%;
+    color: rgb(92, 92, 92);
+}
+
+.msg-state {
+    position: absolute;
+    text-align: right;
+    top: 18%;
+    right: 8%;
+    color: rgb(56, 175, 32);
+    font-weight: bolder;
+}

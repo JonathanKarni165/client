@@ -12,7 +12,7 @@ function App() {
   const ref = useRef(null);
 
   const getMessages = () => {
-    socket.emit("get_messages", (response) => {
+    socket.emit("get_messages", sessionStorage.getItem("name"), (response) => {
       setData(response);
 
       //check if refereshed after a message was failed
@@ -34,29 +34,27 @@ function App() {
   };
 
   const signUp = (username, password) => {
-    const user = { username: username, password: password }
+    const user = { username: username, password: password };
     socket.emit("add_user", user, (response) => {
       if (response) {
         alert("user created succesfuly!");
-      }
-      else {
+      } else {
         alert("username already exist");
       }
     });
-  }
+  };
 
   const signIn = (username, password) => {
     const user = { username: username, password: password };
     socket.emit("sign_in", user, (response) => {
       if (response) {
-        sessionStorage.setItem("name", username)
-      }
-      else {
+        sessionStorage.setItem("name", username);
+        window.location.reload(false);
+      } else {
         alert("username or password error");
       }
     });
-  }
-
+  };
 
   const scrollDown = () => {
     const element = ref.current;
@@ -64,6 +62,8 @@ function App() {
   };
 
   useEffect(() => {
+    console.log(data);
+
     socket.on("connect", () => {
       getMessages();
     });
@@ -77,27 +77,23 @@ function App() {
     });
   });
 
-
   useEffect(() => {
-    if (sessionStorage.getItem("name"))
-      scrollDown()
-
+    if (sessionStorage.getItem("name")) scrollDown();
   }, [data]);
-
 
   if (sessionStorage.getItem("name")) {
     return (
       <div>
         <h1 className={"tit"}>Chat App</h1>
         <div className="panel">
-          {typeof data.messages === "undefined" ? (
+          {typeof data.public_room === "undefined" ? (
             <p>loading...</p>
           ) : (
-            data.messages.map((msg, id) => {
+            data.public_room.messages.map((msg, id) => {
               return (
                 <Message
                   text={msg.text}
-                  name={msg.name ? msg.name : ""}
+                  name={msg.sender ? msg.sender : ""}
                   index={id}
                   msgs={data.messages}
                 />
@@ -112,10 +108,7 @@ function App() {
     );
   }
 
-  return (
-    <SetNameForm signIn={signIn} signUp={signUp} />
-  );
-
+  return <SetNameForm signIn={signIn} signUp={signUp} />;
 }
 
 export default App;
